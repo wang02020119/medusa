@@ -704,11 +704,11 @@ def run_test(n, timeout, attacker, victim=None):
     c = 0
     for _ in range(n):    
         # print("Gen %s"%(c))
-        asm_source, log = generate()
-        run_cmd('make')
-        cmd = "timeout %s ./app %s"%(timeout, attacker)
+        asm_source, log = generate() 
+        run_cmd('make') #运行make
+        cmd = "timeout %s ./app %s"%(timeout, attacker) #设定好timeout和设置好的attacker的参数然后拼凑成一条命令
         if victim is not None:
-            cmd = "%s %s"%(cmd, victim)
+            cmd = "%s %s"%(cmd, victim) #拼凑出指令
         
         print("Try %s"%(c))
         leakage = run_cmd(cmd)
