@@ -697,7 +697,7 @@ def run_cmd(cmdstr):
     cmd = cmdstr.split()
     proc = subprocess.Popen(cmd, stdout=subprocess.PIPE)
     proc.wait()
-    return proc.stdout.read().decode('utf8')
+    return proc.stdout.read().decode('utf8') #读取执行后的结果，return回去
 
 
 def run_test(n, timeout, attacker, victim=None):
@@ -711,7 +711,7 @@ def run_test(n, timeout, attacker, victim=None):
             cmd = "%s %s"%(cmd, victim) #拼凑出指令
         
         print("Try %s"%(c))
-        leakage = run_cmd(cmd)
+        leakage = run_cmd(cmd) #得到了运行上面“timeout ...”的输出值
         leakage = leakage.split("\n")
         hist = {}
         if len(leakage) > 1:
